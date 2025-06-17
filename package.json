@@ -1,6 +1,6 @@
 {
-	"name": "task-master-ai",
-	"version": "0.17.0",
+	"name": "@pak360/task-master-ai",
+	"version": "0.17.1",
 	"description": "A task management system for ambitious AI-driven development that doesn't overwhelm and confuse Cursor.",
 	"main": "index.js",
 	"type": "module",
@@ -80,11 +80,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/eyaltoledano/claude-task-master.git"
+		"url": "git+https://github.com/pak360/claude-task-master.git"
 	},
-	"homepage": "https://github.com/eyaltoledano/claude-task-master#readme",
+	"homepage": "https://github.com/pak360/claude-task-master#readme",
 	"bugs": {
-		"url": "https://github.com/eyaltoledano/claude-task-master/issues"
+		"url": "https://github.com/pak360/claude-task-master/issues"
 	},
 	"files": [
 		"scripts/**",
