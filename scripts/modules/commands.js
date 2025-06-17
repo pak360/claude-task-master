@@ -110,6 +110,7 @@ import {
 } from '../../src/constants/task-status.js';
 import { getTaskMasterVersion } from '../../src/utils/getVersion.js';
 import { syncTasksToReadme } from './sync-readme.js';
+import { removeProjectFiles } from './task-manager/remove-project-files.js';
 
 /**
  * Runs the interactive setup process for model configuration.
@@ -3228,6 +3229,27 @@ ${result.result}
 			} catch (error) {
 				console.error(
 					chalk.red(`Error during initialization: ${error.message}`)
+				);
+				process.exit(1);
+			}
+		});
+
+	// remove command
+	programInstance
+		.command('remove')
+		.description('Remove all Task Master files and directories from the project')
+		.option('-y, --yes', 'Skip confirmation prompt and proceed with deletion')
+		.action(async (options) => {
+			try {
+				const projectRoot = findProjectRoot();
+				if (!projectRoot) {
+					console.error(chalk.red('Error: Could not find project root.'));
+					process.exit(1);
+				}
+				await removeProjectFiles(options, projectRoot);
+			} catch (error) {
+				console.error(
+					chalk.red(`Error during removal: ${error.message}`)
 				);
 				process.exit(1);
 			}

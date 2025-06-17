@@ -23,3 +23,7 @@ node_modules/
 
 # OS specific
 .DS_Store
+
+# Task Master generated reports and user-specific state
+.taskmaster/reports/
+.taskmaster/state.json
