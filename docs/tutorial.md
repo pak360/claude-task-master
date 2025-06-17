@@ -1,29 +1,103 @@
-# Task Master Tutorial
+# Task Master - pak360 Fork
 
-This tutorial will guide you through setting up and using Task Master for AI-driven development.
+[![CI](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml/badge.svg)](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml) [![npm version](https://badge.fury.io/js/pak360-task-master-ai.svg)](https://badge.fury.io/js/pak360-task-master-ai) [![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/taskmasterai?style=flat)](https://discord.gg/taskmasterai) [![License: MIT with Commons Clause](https://img.shields.io/badge/license-MIT%20with%20Commons%20Clause-blue.svg)](LICENSE)
 
-## Initial Setup
+Forked from [eyaltoledano/claude-task-master](https://github.com/eyaltoledano/claude-task-master)
 
-There are two ways to set up Task Master: using MCP (recommended) or via npm installation.
+## Original Authors
+[@eyaltoledano](https://x.com/eyaltoledano), [@RalphEcom](https://x.com/RalphEcom) & [@jasonzhou1993](https://x.com/jasonzhou1993)
 
-### Option 1: Using MCP (Recommended)
+A task management system for AI-driven development with Claude, designed to work seamlessly with Cursor AI.
 
-MCP (Model Control Protocol) provides the easiest way to get started with Task Master directly in your editor.
+## Documentation
 
-1. **Install the package**
+For more detailed information, check out the documentation in the `docs` directory:
 
-```bash
-npm i -g task-master-ai
+- [Configuration Guide](docs/configuration.md) - Set up environment variables and customize Task Master
+- [Tutorial](docs/tutorial.md) - Step-by-step guide to getting started with Task Master
+- [Command Reference](docs/command-reference.md) - Complete list of all available commands
+- [Task Structure](docs/task-structure.md) - Understanding the task format and features
+- [Example Interactions](docs/examples.md) - Common Cursor AI interaction examples
+- [Migration Guide](docs/migration-guide.md) - Guide to migrating to the new project structure
+
+#### Quick Install for Cursor 1.0+ (One-Click)
+
+📋 Click the copy button (top-right of code block) then paste into your browser:
+
+```text
+cursor://anysphere.cursor-deeplink/mcp/install?name=taskmaster-ai&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIi0tcGFja2FnZT1wYWszNjAtdGFzay1tYXN0ZXItYWkiLCJ0YXNrLW1hc3Rlci1haSJdLCJlbnYiOnsiQU5USFJPUElDX0FQSV9LRVkiOiJZT1VSX0FOVEhST1BJQ19BUElfS0VZX0hFUkUiLCJQRVJQTEVYSVRZX0FQSV9LRVkiOiJZT1VSX1BFUlBMRVhJVFlfQVBJX0tFWV9IRVJFIiwiT1BFTkFJX0FQSV9LRVkiOiJZT1VSX09QRU5BSV9LRVlfSEVSRSIsIkdPT0dMRV9BUElfS0VZIjoiWU9VUl9HT09HTEVfS0VZX0hFUkUiLCJNSVNUUkFMX0FQSV9LRVkiOiJZT1VSX01JU1RSQUxfS0VZX0hFUkUiLCJPUEVOUk9VVEVSX0FQSV9LRVkiOiJZT1VSX09QRU5ST1VURVJfS0VZX0hFUkUiLCJYQUlfQVBJX0tFWSI6IllPVVJfWEFJX0tFWV9IRVJFIiwiQVpVUkVfT1BFTkFJX0FQSV9LRVkiOiJZT1VSX0FaVVJFX0tFWV9IRVJFIiwiT0xMQU1BX0FQSV9LRVkiOiJZT1VSX09MTEFNQV9BUElfS0VZX0hFUkUifX0K
 ```
 
-2. **Add the MCP config to your IDE/MCP Client** (Cursor is recommended, but it works with other clients):
+> **Note:** After clicking the link, you'll still need to add your API keys to the configuration. The link installs the MCP server with placeholder keys that you'll need to replace with your actual API keys.
+
+## Requirements
+
+Taskmaster utilizes AI across several commands, and those require a separate API key. You can use a variety of models from different AI providers provided you add your API keys. For example, if you want to use Claude 3.7, you'll need an Anthropic API key.
+
+You can define 3 types of models to be used: the main model, the research model, and the fallback model (in case either the main or research fail). Whatever model you use, its provider API key must be present in either mcp.json or .env.
+
+At least one (1) of the following is required:
+
+- Anthropic API key (Claude API)
+- OpenAI API key
+- Google Gemini API key
+- Perplexity API key (for research model)
+- xAI API Key (for research or main model)
+- OpenRouter API Key (for research or main model)
+
+Using the research model is optional but highly recommended. You will need at least ONE API key. Adding all API keys enables you to seamlessly switch between model providers at will.
+
+## Quick Start
+
+### Option 1: MCP (Recommended)
+
+MCP (Model Control Protocol) lets you run Task Master directly from your editor.
+
+#### 1. Add your MCP config at the following path depending on your editor
+
+| Editor       | Scope   | Linux/macOS Path                      | Windows Path                                      | Key          |
+| ------------ | ------- | ------------------------------------- | ------------------------------------------------- | ------------ |
+| **Cursor**   | Global  | `~/.cursor/mcp.json`                  | `%USERPROFILE%\.cursor\mcp.json`                  | `mcpServers` |
+|              | Project | `<project_folder>/.cursor/mcp.json`   | `<project_folder>\.cursor\mcp.json`               | `mcpServers` |
+| **Windsurf** | Global  | `~/.codeium/windsurf/mcp_config.json` | `%USERPROFILE%\.codeium\windsurf\mcp_config.json` | `mcpServers` |
+| **VS Code**  | Project | `<project_folder>/.vscode/mcp.json`   | `<project_folder>\.vscode\mcp.json`               | `servers`    |
+
+##### Manual Configuration
+
+###### Cursor & Windsurf (`mcpServers`)
 
 ```json
 {
   "mcpServers": {
     "taskmaster-ai": {
       "command": "npx",
-      "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+      "args": ["-y", "--package=pak360-task-master-ai", "task-master-ai"],
+      "env": {
+        "ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
+        "PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
+        "OPENAI_API_KEY": "YOUR_OPENAI_KEY_HERE",
+        "GOOGLE_API_KEY": "YOUR_GOOGLE_KEY_HERE",
+        "MISTRAL_API_KEY": "YOUR_MISTRAL_KEY_HERE",
+        "OPENROUTER_API_KEY": "YOUR_OPENROUTER_KEY_HERE",
+        "XAI_API_KEY": "YOUR_XAI_KEY_HERE",
+        "AZURE_OPENAI_API_KEY": "YOUR_AZURE_KEY_HERE",
+        "OLLAMA_API_KEY": "YOUR_OLLAMA_API_KEY_HERE"
+      }
+    }
+  }
+}
+```
+
+> 🔑 Replace `YOUR_…_KEY_HERE` with your real API keys. You can remove keys you don't use.
+
+###### VS Code (`servers` + `type`)
+
+```json
+{
+  "servers": {
+    "taskmaster-ai": {
+      "command": "npx",
+      "args": ["-y", "--package=pak360-task-master-ai", "task-master-ai"],
       "env": {
         "ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
         "PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
@@ -33,56 +107,78 @@ npm i -g task-master-ai
         "OPENROUTER_API_KEY": "YOUR_OPENROUTER_KEY_HERE",
         "XAI_API_KEY": "YOUR_XAI_KEY_HERE",
         "AZURE_OPENAI_API_KEY": "YOUR_AZURE_KEY_HERE"
-      }
+      },
+      "type": "stdio"
     }
   }
 }
 ```
 
-**IMPORTANT:** An API key is _required_ for each AI provider you plan on using. Run the `task-master models` command to see your selected models and the status of your API keys across .env and mcp.json
+> 🔑 Replace `YOUR_…_KEY_HERE` with your real API keys. You can remove keys you don't use.
 
-**To use AI commands in CLI** you MUST have API keys in the .env file
-**To use AI commands in MCP** you MUST have API keys in the .mcp.json file (or MCP config equivalent)
+#### 2. (Cursor-only) Enable Taskmaster MCP
 
-We recommend having keys in both places and adding mcp.json to your gitignore so your API keys aren't checked into git.
+Open Cursor Settings (Ctrl+Shift+J) ➡ Click on MCP tab on the left ➡ Enable task-master-ai with the toggle
 
-3. **Enable the MCP** in your editor settings
+#### 3. (Optional) Configure the models you want to use
 
-4. **Prompt the AI** to initialize Task Master:
+In your editor's AI chat pane, say:
 
-```
-Can you please initialize taskmaster-ai into my project?
-```
-
-The AI will:
-
-- Create necessary project structure
-- Set up initial configuration files
-- Guide you through the rest of the process
-
-5. Place your PRD document in the `.taskmaster/docs/` directory (e.g., `.taskmaster/docs/prd.txt`)
-
-6. **Use natural language commands** to interact with Task Master:
-
-```
-Can you parse my PRD at .taskmaster/docs/prd.txt?
-What's the next task I should work on?
-Can you help me implement task 3?
+```txt
+Change the main, research and fallback models to <model_name>, <model_name> and <model_name> respectively.
 ```
 
-### Option 2: Manual Installation
+[Table of available models](docs/models.md)
 
-If you prefer to use the command line interface directly:
+#### 4. Initialize Task Master
+
+In your editor's AI chat pane, say:
+
+```txt
+Initialize taskmaster-ai in my project
+```
+
+#### 5. Make sure you have a PRD (Recommended)
+
+For **new projects**: Create your PRD at `.taskmaster/docs/prd.txt`  
+For **existing projects**: You can use `scripts/prd.txt` or migrate with `task-master migrate`
+
+An example PRD template is available after initialization in `.taskmaster/templates/example_prd.txt`.
+
+> [!NOTE]
+> While a PRD is recommended for complex projects, you can always create individual tasks by asking "Can you help me implement [description of what you want to do]?" in chat.
+
+**Always start with a detailed PRD.**
+
+The more detailed your PRD, the better the generated tasks will be.
+
+#### 6. Common Commands
+
+Use your AI assistant to:
+
+- Parse requirements: `Can you parse my PRD at scripts/prd.txt?`
+- Plan next step: `What's the next task I should work on?`
+- Implement a task: `Can you help me implement task 3?`
+- View multiple tasks: `Can you show me tasks 1, 3, and 5?`
+- Expand a task: `Can you help me expand task 4?`
+- **Research fresh information**: `Research the latest best practices for implementing JWT authentication with Node.js`
+- **Research with context**: `Research React Query v5 migration strategies for our current API implementation in src/api.js`
+
+[More examples on how to use Task Master in chat](docs/examples.md)
+
+### Option 2: Using Command Line
+
+#### Installation
 
 ```bash
 # Install globally
-npm install -g task-master-ai
+npm install -g pak360-task-master-ai
 
 # OR install locally within your project
-npm install task-master-ai
+npm install pak360-task-master-ai
 ```
 
-Initialize a new project:
+#### Initialize a new project
 
 ```bash
 # If installed globally
@@ -94,11 +190,12 @@ npx task-master init
 
 This will prompt you for project details and set up a new project with the necessary files and structure.
 
-## Common Commands
-
-After setting up Task Master, you can use these commands (either via AI prompts or CLI):
+#### Common Commands
 
 ```bash
+# Initialize a new project
+task-master init
+
 # Parse a PRD and generate tasks
 task-master parse-prd your-prd.txt
 
@@ -108,483 +205,59 @@ task-master list
 # Show the next task to work on
 task-master next
 
+# Show specific task(s) - supports comma-separated IDs
+task-master show 1,3,5
+
+# Research fresh information with project context
+task-master research "What are the latest best practices for JWT authentication?"
+
 # Generate task files
 task-master generate
 ```
 
-## Setting up Cursor AI Integration
+## Troubleshooting
 
-Task Master is designed to work seamlessly with [Cursor AI](https://www.cursor.so/), providing a structured workflow for AI-driven development.
+### If `task-master init` doesn't respond
 
-### Using Cursor with MCP (Recommended)
-
-If you've already set up Task Master with MCP in Cursor, the integration is automatic. You can simply use natural language to interact with Task Master:
-
-```
-What tasks are available to work on next?
-Can you analyze the complexity of our tasks?
-I'd like to implement task 4. What does it involve?
-```
-
-### Manual Cursor Setup
-
-If you're not using MCP, you can still set up Cursor integration:
-
-1. After initializing your project, open it in Cursor
-2. The `.cursor/rules/dev_workflow.mdc` file is automatically loaded by Cursor, providing the AI with knowledge about the task management system
-3. Place your PRD document in the `.taskmaster/docs/` directory (e.g., `.taskmaster/docs/prd.txt`)
-4. Open Cursor's AI chat and switch to Agent mode
-
-### Alternative MCP Setup in Cursor
-
-You can also set up the MCP server in Cursor settings:
-
-1. Go to Cursor settings
-2. Navigate to the MCP section
-3. Click on "Add New MCP Server"
-4. Configure with the following details:
-   - Name: "Task Master"
-   - Type: "Command"
-   - Command: "npx -y --package=task-master-ai task-master-ai"
-5. Save the settings
-
-Once configured, you can interact with Task Master's task management commands directly through Cursor's interface, providing a more integrated experience.
-
-## Initial Task Generation
-
-In Cursor's AI chat, instruct the agent to generate tasks from your PRD:
-
-```
-Please use the task-master parse-prd command to generate tasks from my PRD. The PRD is located at .taskmaster/docs/prd.txt.
-```
-
-The agent will execute:
+Try running it with Node directly:
 
 ```bash
-task-master parse-prd .taskmaster/docs/prd.txt
+node node_modules/pak360-task-master-ai/scripts/init.js
 ```
 
-This will:
-
-- Parse your PRD document
-- Generate a structured `tasks.json` file with tasks, dependencies, priorities, and test strategies
-- The agent will understand this process due to the Cursor rules
-
-### Generate Individual Task Files
-
-Next, ask the agent to generate individual task files:
-
-```
-Please generate individual task files from tasks.json
-```
-
-The agent will execute:
+Or clone the repository and run:
 
 ```bash
-task-master generate
+git clone https://github.com/pak360/claude-task-master.git
+cd claude-task-master
+node scripts/init.js
 ```
 
-This creates individual task files in the `tasks/` directory (e.g., `task_001.txt`, `task_002.txt`), making it easier to reference specific tasks.
+## Contributors
 
-## AI-Driven Development Workflow
+<a href="https://github.com/pak360/claude-task-master/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=pak360/claude-task-master" alt="Task Master project contributors" />
+</a>
 
-The Cursor agent is pre-configured (via the rules file) to follow this workflow:
+## Star History
 
-### 1. Task Discovery and Selection
+[![Star History Chart](https://api.star-history.com/svg?repos=pak360/claude-task-master&type=Timeline)](https://www.star-history.com/#pak360/claude-task-master&Timeline)
 
-Ask the agent to list available tasks:
+## Licensing
 
-```
-What tasks are available to work on next?
-```
-
-```
-Can you show me tasks 1, 3, and 5 to understand their current status?
-```
-
-The agent will:
-
-- Run `task-master list` to see all tasks
-- Run `task-master next` to determine the next task to work on
-- Run `task-master show 1,3,5` to display multiple tasks with interactive options
-- Analyze dependencies to determine which tasks are ready to be worked on
-- Prioritize tasks based on priority level and ID order
-- Suggest the next task(s) to implement
-
-### 2. Task Implementation
-
-When implementing a task, the agent will:
-
-- Reference the task's details section for implementation specifics
-- Consider dependencies on previous tasks
-- Follow the project's coding standards
-- Create appropriate tests based on the task's testStrategy
-
-You can ask:
-
-```
-Let's implement task 3. What does it involve?
-```
-
-### 2.1. Viewing Multiple Tasks
-
-For efficient context gathering and batch operations:
-
-```
-Show me tasks 5, 7, and 9 so I can plan my implementation approach.
-```
-
-The agent will:
-
-- Run `task-master show 5,7,9` to display a compact summary table
-- Show task status, priority, and progress indicators
-- Provide an interactive action menu with batch operations
-- Allow you to perform group actions like marking multiple tasks as in-progress
-
-### 3. Task Verification
-
-Before marking a task as complete, verify it according to:
-
-- The task's specified testStrategy
-- Any automated tests in the codebase
-- Manual verification if required
-
-### 4. Task Completion
-
-When a task is completed, tell the agent:
-
-```
-Task 3 is now complete. Please update its status.
-```
-
-The agent will execute:
-
-```bash
-task-master set-status --id=3 --status=done
-```
-
-### 5. Handling Implementation Drift
-
-If during implementation, you discover that:
-
-- The current approach differs significantly from what was planned
-- Future tasks need to be modified due to current implementation choices
-- New dependencies or requirements have emerged
-
-Tell the agent:
-
-```
-We've decided to use MongoDB instead of PostgreSQL. Can you update all future tasks (from ID 4) to reflect this change?
-```
-
-The agent will execute:
-
-```bash
-task-master update --from=4 --prompt="Now we are using MongoDB instead of PostgreSQL."
-
-# OR, if research is needed to find best practices for MongoDB:
-task-master update --from=4 --prompt="Update to use MongoDB, researching best practices" --research
-```
-
-This will rewrite or re-scope subsequent tasks in tasks.json while preserving completed work.
-
-### 6. Reorganizing Tasks
-
-If you need to reorganize your task structure:
-
-```
-I think subtask 5.2 would fit better as part of task 7 instead. Can you move it there?
-```
-
-The agent will execute:
-
-```bash
-task-master move --from=5.2 --to=7.3
-```
-
-You can reorganize tasks in various ways:
-
-- Moving a standalone task to become a subtask: `--from=5 --to=7`
-- Moving a subtask to become a standalone task: `--from=5.2 --to=7`
-- Moving a subtask to a different parent: `--from=5.2 --to=7.3`
-- Reordering subtasks within the same parent: `--from=5.2 --to=5.4`
-- Moving a task to a new ID position: `--from=5 --to=25` (even if task 25 doesn't exist yet)
-- Moving multiple tasks at once: `--from=10,11,12 --to=16,17,18` (must have same number of IDs, Taskmaster will look through each position)
-
-When moving tasks to new IDs:
-
-- The system automatically creates placeholder tasks for non-existent destination IDs
-- This prevents accidental data loss during reorganization
-- Any tasks that depend on moved tasks will have their dependencies updated
-- When moving a parent task, all its subtasks are automatically moved with it and renumbered
-
-This is particularly useful as your project understanding evolves and you need to refine your task structure.
-
-### 7. Resolving Merge Conflicts with Tasks
-
-When working with a team, you might encounter merge conflicts in your tasks.json file if multiple team members create tasks on different branches. The move command makes resolving these conflicts straightforward:
-
-```
-I just merged the main branch and there's a conflict with tasks.json. My teammates created tasks 10-15 while I created tasks 10-12 on my branch. Can you help me resolve this?
-```
-
-The agent will help you:
-
-1. Keep your teammates' tasks (10-15)
-2. Move your tasks to new positions to avoid conflicts:
-
-```bash
-# Move your tasks to new positions (e.g., 16-18)
-task-master move --from=10 --to=16
-task-master move --from=11 --to=17
-task-master move --from=12 --to=18
-```
-
-This approach preserves everyone's work while maintaining a clean task structure, making it much easier to handle task conflicts than trying to manually merge JSON files.
-
-### 8. Breaking Down Complex Tasks
-
-For complex tasks that need more granularity:
-
-```
-Task 5 seems complex. Can you break it down into subtasks?
-```
-
-The agent will execute:
-
-```bash
-task-master expand --id=5 --num=3
-```
-
-You can provide additional context:
-
-```
-Please break down task 5 with a focus on security considerations.
-```
-
-The agent will execute:
-
-```bash
-task-master expand --id=5 --prompt="Focus on security aspects"
-```
-
-You can also expand all pending tasks:
-
-```
-Please break down all pending tasks into subtasks.
-```
-
-The agent will execute:
-
-```bash
-task-master expand --all
-```
-
-For research-backed subtask generation using the configured research model:
-
-```
-Please break down task 5 using research-backed generation.
-```
-
-The agent will execute:
-
-```bash
-task-master expand --id=5 --research
-```
-
-## Example Cursor AI Interactions
-
-### Starting a new project
-
-```
-I've just initialized a new project with Claude Task Master. I have a PRD at .taskmaster/docs/prd.txt.
-Can you help me parse it and set up the initial tasks?
-```
-
-### Working on tasks
-
-```
-What's the next task I should work on? Please consider dependencies and priorities.
-```
-
-### Implementing a specific task
-
-```
-I'd like to implement task 4. Can you help me understand what needs to be done and how to approach it?
-```
-
-### Managing subtasks
-
-```
-I need to regenerate the subtasks for task 3 with a different approach. Can you help me clear and regenerate them?
-```
-
-### Handling changes
-
-```
-We've decided to use MongoDB instead of PostgreSQL. Can you update all future tasks to reflect this change?
-```
-
-### Completing work
-
-```
-I've finished implementing the authentication system described in task 2. All tests are passing.
-Please mark it as complete and tell me what I should work on next.
-```
-
-### Analyzing complexity
-
-```
-Can you analyze the complexity of our tasks to help me understand which ones need to be broken down further?
-```
-
-### Viewing complexity report
-
-```
-Can you show me the complexity report in a more readable format?
-```
-
-### Research-Driven Development
-
-Task Master includes a powerful research tool that provides fresh, up-to-date information beyond the AI's knowledge cutoff. This is particularly valuable for:
-
-#### Getting Current Best Practices
-
-```
-Before implementing task 5 (authentication), research the latest JWT security recommendations.
-```
-
-The agent will execute:
-
-```bash
-task-master research "Latest JWT security recommendations 2024" --id=5
-```
-
-#### Research with Project Context
-
-```
-Research React Query v5 migration strategies for our current API implementation.
-```
-
-The agent will execute:
-
-```bash
-task-master research "React Query v5 migration strategies" --files=src/api.js,src/hooks.js
-```
-
-#### Research and Update Pattern
-
-A powerful workflow is to research first, then update tasks with findings:
-
-```
-Research the latest Node.js performance optimization techniques and update task 12 with the findings.
-```
-
-The agent will:
-
-1. Run research: `task-master research "Node.js performance optimization 2024" --id=12`
-2. Update the task: `task-master update-subtask --id=12.2 --prompt="Updated with latest performance findings: [research results]"`
-
-#### When to Use Research
-
-- **Before implementing any new technology**
-- **When encountering security-related tasks**
-- **For performance optimization tasks**
-- **When debugging complex issues**
-- **Before making architectural decisions**
-- **When updating dependencies**
-
-The research tool automatically includes relevant project context and provides fresh information that can significantly improve implementation quality.
-
-## Git Integration and Tag Management
-
-Task Master supports tagged task lists for multi-context development, which is particularly useful when working with git branches or different project phases.
-
-### Working with Tags
-
-Tags provide isolated task contexts, allowing you to maintain separate task lists for different features, branches, or experiments:
-
-```
-I'm starting work on a new feature branch. Can you create a new tag for this work?
-```
-
-The agent will execute:
-
-```bash
-# Create a tag based on your current git branch
-task-master add-tag --from-branch
-```
-
-Or you can create a tag with a specific name:
-
-```
-Create a new tag called 'user-auth' for authentication-related tasks.
-```
-
-The agent will execute:
-
-```bash
-task-master add-tag user-auth --description="User authentication feature tasks"
-```
-
-### Switching Between Contexts
-
-When working on different features or branches:
-
-```
-Switch to the 'user-auth' tag context so I can work on authentication tasks.
-```
-
-The agent will execute:
-
-```bash
-task-master use-tag user-auth
-```
-
-### Copying Tasks Between Tags
-
-When you need to duplicate work across contexts:
-
-```
-Copy all tasks from the current tag to a new 'testing' tag for QA work.
-```
-
-The agent will execute:
-
-```bash
-task-master add-tag testing --copy-from-current --description="QA and testing tasks"
-```
-
-### Tag Management
-
-View and manage your tag contexts:
-
-```
-Show me all available tags and their current status.
-```
-
-The agent will execute:
-
-```bash
-task-master tags --show-metadata
-```
-
-### Benefits of Tagged Task Lists
+Task Master is licensed under the MIT License with Commons Clause. This means you can:
 
-- **Branch Isolation**: Each git branch can have its own task context
-- **Merge Conflict Prevention**: Tasks in different tags don't interfere with each other
-- **Parallel Development**: Multiple team members can work on separate contexts
-- **Context Switching**: Easily switch between different project phases or features
-- **Experimentation**: Create experimental task lists without affecting main work
+✅ **Allowed**:
 
-### Git Workflow Integration
+- Use Task Master for any purpose (personal, commercial, academic)
+- Modify the code
+- Distribute copies
+- Create and sell products built using Task Master
 
-A typical git workflow with Task Master tags:
+❌ **Not Allowed**:
 
-1. **Create feature branch**: `git checkout -b feature/user-auth`
-2. **Create matching tag**: Ask agent to run `task-master add-tag --from-branch`
-3. **Work in isolated context**: All task operations work within the new tag
-4. **Switch contexts as needed**: Use `task-master use-tag <name>` to switch between different work streams
-5. **Merge and cleanup**: After merging the branch, optionally delete the tag with `task-master delete-tag <name>`
+- Sell Task Master itself
+- Offer Task Master as a hosted service
+- Create competing products based on Task Master
 
-This workflow ensures your task management stays organized and conflicts are minimized when working with teams or multiple features simultaneously.
+See the [LICENSE](LICENSE) file for the complete license text and [licensing details](docs/licensing.md) for more information.

@@ -3,7 +3,6 @@ description: Guidelines for implementing CLI commands using Commander.js
 globs: scripts/modules/commands.js
 alwaysApply: false
 ---
-
 # Command-Line Interface Implementation Guidelines
 
 **Note on Interaction Method:**
@@ -584,7 +583,7 @@ For AI-powered commands that benefit from project context, follow the research c
   function displayUpgradeNotification(currentVersion, latestVersion) {
     const message = boxen(
       `${chalk.blue.bold('Update Available!')} ${chalk.dim(currentVersion)} → ${chalk.green(latestVersion)}\n\n` +
-      `Run ${chalk.cyan('npm i task-master-ai@latest -g')} to update to the latest version with new features and bug fixes.`,
+      `Run ${chalk.cyan('npm i pak360-task-master-ai@latest -g')} to update to the latest version with new features and bug fixes.`,
       {
         padding: 1,
         margin: { top: 1, bottom: 1 },
