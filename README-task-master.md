@@ -163,6 +163,7 @@ Use your AI assistant to:
 - Expand a task: `Can you help me expand task 4?`
 - **Research fresh information**: `Research the latest best practices for implementing JWT authentication with Node.js`
 - **Research with context**: `Research React Query v5 migration strategies for our current API implementation in src/api.js`
+- **Remove Task Master files**: `Can you remove Task Master from this project?`
 
 [More examples on how to use Task Master in chat](docs/examples.md)
 
@@ -213,6 +214,9 @@ task-master research "What are the latest best practices for JWT authentication?
 
 # Generate task files
 task-master generate
+
+# Remove Task Master files from project
+task-master remove
 ```
 
 ## Troubleshooting
