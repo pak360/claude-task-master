@@ -1,14 +1,11 @@
-# Task Master [![GitHub stars](https://img.shields.io/github/stars/eyaltoledano/claude-task-master?style=social)](https://github.com/eyaltoledano/claude-task-master/stargazers)
+# Task Master - pak360 Fork
 
-[![CI](https://github.com/eyaltoledano/claude-task-master/actions/workflows/ci.yml/badge.svg)](https://github.com/eyaltoledano/claude-task-master/actions/workflows/ci.yml) [![npm version](https://badge.fury.io/js/task-master-ai.svg)](https://badge.fury.io/js/task-master-ai) [![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/taskmasterai?style=flat)](https://discord.gg/taskmasterai) [![License: MIT with Commons Clause](https://img.shields.io/badge/license-MIT%20with%20Commons%20Clause-blue.svg)](LICENSE)
+[![CI](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml/badge.svg)](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml) [![npm version](https://badge.fury.io/js/pak360-task-master-ai.svg)](https://badge.fury.io/js/pak360-task-master-ai) [![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/taskmasterai?style=flat)](https://discord.gg/taskmasterai) [![License: MIT with Commons Clause](https://img.shields.io/badge/license-MIT%20with%20Commons%20Clause-blue.svg)](LICENSE)
 
-[![NPM Downloads](https://img.shields.io/npm/d18m/task-master-ai?style=flat)](https://www.npmjs.com/package/task-master-ai) [![NPM Downloads](https://img.shields.io/npm/dm/task-master-ai?style=flat)](https://www.npmjs.com/package/task-master-ai) [![NPM Downloads](https://img.shields.io/npm/dw/task-master-ai?style=flat)](https://www.npmjs.com/package/task-master-ai)
+Forked from [eyaltoledano/claude-task-master](https://github.com/eyaltoledano/claude-task-master)
 
-## By [@eyaltoledano](https://x.com/eyaltoledano), [@RalphEcom](https://x.com/RalphEcom) & [@jasonzhou1993](https://x.com/jasonzhou1993)
-
-[![Twitter Follow](https://img.shields.io/twitter/follow/eyaltoledano)](https://x.com/eyaltoledano)
-[![Twitter Follow](https://img.shields.io/twitter/follow/RalphEcom)](https://x.com/RalphEcom)
-[![Twitter Follow](https://img.shields.io/twitter/follow/jasonzhou1993)](https://x.com/jasonzhou1993)
+## Original Authors
+[@eyaltoledano](https://x.com/eyaltoledano), [@RalphEcom](https://x.com/RalphEcom) & [@jasonzhou1993](https://x.com/jasonzhou1993)
 
 A task management system for AI-driven development with Claude, designed to work seamlessly with Cursor AI.
 
@@ -28,7 +25,7 @@ For more detailed information, check out the documentation in the `docs` directo
 📋 Click the copy button (top-right of code block) then paste into your browser:
 
 ```text
-cursor://anysphere.cursor-deeplink/mcp/install?name=taskmaster-ai&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIi0tcGFja2FnZT10YXNrLW1hc3Rlci1haSIsInRhc2stbWFzdGVyLWFpIl0sImVudiI6eyJBTlRIUk9QSUNfQVBJX0tFWSI6IllPVVJfQU5USFJPUElDX0FQSV9LRVlfSEVSRSIsIlBFUlBMRVhJVFlfQVBJX0tFWSI6IllPVVJfUEVSUExFWElUWV9BUElfS0VZX0hFUkUiLCJPUEVOQUlfQVBJX0tFWSI6IllPVVJfT1BFTkFJX0tFWV9IRVJFIiwiR09PR0xFX0FQSV9LRVkiOiJZT1VSX0dPT0dMRV9LRVlfSEVSRSIsIk1JU1RSQUxfQVBJX0tFWSI6IllPVVJfTUlTVFJBTF9LRVlfSEVSRSIsIk9QRU5ST1VURVJfQVBJX0tFWSI6IllPVVJfT1BFTlJPVVRFUl9LRVlfSEVSRSIsIlhBSV9BUElfS0VZIjoiWU9VUl9YQUlfS0VZX0hFUkUiLCJBWlVSRV9PUEVOQUlfQVBJX0tFWSI6IllPVVJfQVpVUkVfS0VZX0hFUkUiLCJPTExBTUFfQVBJX0tFWSI6IllPVVJfT0xMQU1BX0FQSV9LRVlfSEVSRSJ9fQo=
+cursor://anysphere.cursor-deeplink/mcp/install?name=taskmaster-ai&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIi0tcGFja2FnZT1wYWszNjAtdGFzay1tYXN0ZXItYWkiLCJ0YXNrLW1hc3Rlci1haSJdLCJlbnYiOnsiQU5USFJPUElDX0FQSV9LRVkiOiJZT1VSX0FOVEhST1BJQ19BUElfS0VZX0hFUkUiLCJQRVJQTEVYSVRZX0FQSV9LRVkiOiJZT1VSX1BFUlBMRVhJVFlfQVBJX0tFWV9IRVJFIiwiT1BFTkFJX0FQSV9LRVkiOiJZT1VSX09QRU5BSV9LRVlfSEVSRSIsIkdPT0dMRV9BUElfS0VZIjoiWU9VUl9HT09HTEVfS0VZX0hFUkUiLCJNSVNUUkFMX0FQSV9LRVkiOiJZT1VSX01JU1RSQUxfS0VZX0hFUkUiLCJPUEVOUk9VVEVSX0FQSV9LRVkiOiJZT1VSX09QRU5ST1VURVJfS0VZX0hFUkUiLCJYQUlfQVBJX0tFWSI6IllPVVJfWEFJX0tFWV9IRVJFIiwiQVpVUkVfT1BFTkFJX0FQSV9LRVkiOiJZT1VSX0FaVVJFX0tFWV9IRVJFIiwiT0xMQU1BX0FQSV9LRVkiOiJZT1VSX09MTEFNQV9BUElfS0VZX0hFUkUifX0K
 ```
 
 > **Note:** After clicking the link, you'll still need to add your API keys to the configuration. The link installs the MCP server with placeholder keys that you'll need to replace with your actual API keys.
@@ -74,7 +71,7 @@ MCP (Model Control Protocol) lets you run Task Master directly from your editor.
   "mcpServers": {
     "taskmaster-ai": {
       "command": "npx",
-      "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+      "args": ["-y", "--package=pak360-task-master-ai", "task-master-ai"],
       "env": {
         "ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
         "PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
@@ -93,14 +90,14 @@ MCP (Model Control Protocol) lets you run Task Master directly from your editor.
 
 > 🔑 Replace `YOUR_…_KEY_HERE` with your real API keys. You can remove keys you don't use.
 
-###### VS Code (`servers` + `type`)
+###### VS Code (`servers` + `type`)
 
 ```json
 {
   "servers": {
     "taskmaster-ai": {
       "command": "npx",
-      "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+      "args": ["-y", "--package=pak360-task-master-ai", "task-master-ai"],
       "env": {
         "ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
         "PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
@@ -175,10 +172,10 @@ Use your AI assistant to:
 
 ```bash
 # Install globally
-npm install -g task-master-ai
+npm install -g pak360-task-master-ai
 
 # OR install locally within your project
-npm install task-master-ai
+npm install pak360-task-master-ai
 ```
 
 #### Initialize a new project
@@ -225,26 +222,26 @@ task-master generate
 Try running it with Node directly:
 
 ```bash
-node node_modules/claude-task-master/scripts/init.js
+node node_modules/pak360-task-master-ai/scripts/init.js
 ```
 
 Or clone the repository and run:
 
 ```bash
-git clone https://github.com/eyaltoledano/claude-task-master.git
+git clone https://github.com/pak360/claude-task-master.git
 cd claude-task-master
 node scripts/init.js
 ```
 
 ## Contributors
 
-<a href="https://github.com/eyaltoledano/claude-task-master/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=eyaltoledano/claude-task-master" alt="Task Master project contributors" />
+<a href="https://github.com/pak360/claude-task-master/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=pak360/claude-task-master" alt="Task Master project contributors" />
 </a>
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=eyaltoledano/claude-task-master&type=Timeline)](https://www.star-history.com/#eyaltoledano/claude-task-master&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=pak360/claude-task-master&type=Timeline)](https://www.star-history.com/#pak360/claude-task-master&Timeline)
 
 ## Licensing
 
