@@ -8,6 +8,7 @@ Forked from [eyaltoledano/claude-task-master](https://github.com/eyaltoledano/cl
 [@eyaltoledano](https://x.com/eyaltoledano), [@RalphEcom](https://x.com/RalphEcom) & [@jasonzhou1993](https://x.com/jasonzhou1993)
 
 A task management system for AI-driven development with Claude, designed to work seamlessly with Cursor AI.
+-Includes a feature to remove task master files at the end of a project.
 
 ## Documentation
 
