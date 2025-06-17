@@ -1,5 +1,5 @@
 {
-	"name": "@pak360/task-master-ai",
+	"name": "pak360-task-master-ai",
 	"version": "0.17.1",
 	"description": "A task management system for ambitious AI-driven development that doesn't overwhelm and confuse Cursor.",
 	"main": "index.js",

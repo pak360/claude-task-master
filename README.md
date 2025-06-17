@@ -1,6 +1,6 @@
-# Task Master - @pak360 Fork
+# Task Master - pak360 Fork
 
-[![CI](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml/badge.svg)](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml) [![npm version](https://badge.fury.io/js/%40pak360%2Ftask-master-ai.svg)](https://badge.fury.io/js/%40pak360%2Ftask-master-ai) [![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/taskmasterai?style=flat)](https://discord.gg/taskmasterai) [![License: MIT with Commons Clause](https://img.shields.io/badge/license-MIT%20with%20Commons%20Clause-blue.svg)](LICENSE)
+[![CI](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml/badge.svg)](https://github.com/pak360/claude-task-master/actions/workflows/ci.yml) [![npm version](https://badge.fury.io/js/pak360-task-master-ai.svg)](https://badge.fury.io/js/pak360-task-master-ai) [![Discord](https://dcbadge.limes.pink/api/server/https://discord.gg/taskmasterai?style=flat)](https://discord.gg/taskmasterai) [![License: MIT with Commons Clause](https://img.shields.io/badge/license-MIT%20with%20Commons%20Clause-blue.svg)](LICENSE)
 
 Forked from [eyaltoledano/claude-task-master](https://github.com/eyaltoledano/claude-task-master)
 
@@ -25,7 +25,7 @@ For more detailed information, check out the documentation in the `docs` directo
 📋 Click the copy button (top-right of code block) then paste into your browser:
 
 ```text
-cursor://anysphere.cursor-deeplink/mcp/install?name=taskmaster-ai&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIi0tcGFja2FnZT1AcGFrMzYwL3Rhc2stbWFzdGVyLWFpIiwidGFzay1tYXN0ZXItYWkiXSwiZW52Ijp7IkFOVEhST1BJQ19BUElfS0VZIjoiWU9VUl9BTlRIUk9QSUNfQVBJX0tFWV9IRVJFIiwiUEVSUExFWElUWV9BUElfS0VZIjoiWU9VUl9QRVJQTEVYSVRZX0FQSV9LRVlfSEVSRSIsIk9QRU5BSV9BUElfS0VZIjoiWU9VUl9PUEVOQUlfS0VZX0hFUkUiLCJHT09HTEVfQVBJX0tFWSI6IllPVVJfR09PR0xFX0tFWV9IRVJFIiwiTUlTVFJBTF9BUElfS0VZIjoiWU9VUl9NSVNUUkFMX0tFWV9IRVJFIiwiT1BFTlJPVVRFUl9BUElfS0VZIjoiWU9VUl9PUEVOUk9VVEVSX0tFWV9IRVJFIiwiWEFJX0FQSV9LRVkiOiJZT1VSX1hBSV9LRVlfSEVSRSIsIkFaVVJFX09QRU5BSV9BUElfS0VZIjoiWU9VUl9BWlVSRV9LRVlfSEVSRSIsIk9MTEFNQV9BUElfS0VZIjoiWU9VUl9PTExBTUFfQVBJX0tFWV9IRVJFIn19Cg==
+cursor://anysphere.cursor-deeplink/mcp/install?name=taskmaster-ai&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIi0tcGFja2FnZT1wYWszNjAtdGFzay1tYXN0ZXItYWkiLCJ0YXNrLW1hc3Rlci1haSJdLCJlbnYiOnsiQU5USFJPUElDX0FQSV9LRVkiOiJZT1VSX0FOVEhST1BJQ19BUElfS0VZX0hFUkUiLCJQRVJQTEVYSVRZX0FQSV9LRVkiOiJZT1VSX1BFUlBMRVhJVFlfQVBJX0tFWV9IRVJFIiwiT1BFTkFJX0FQSV9LRVkiOiJZT1VSX09QRU5BSV9LRVlfSEVSRSIsIkdPT0dMRV9BUElfS0VZIjoiWU9VUl9HT09HTEVfS0VZX0hFUkUiLCJNSVNUUkFMX0FQSV9LRVkiOiJZT1VSX01JU1RSQUxfS0VZX0hFUkUiLCJPUEVOUk9VVEVSX0FQSV9LRVkiOiJZT1VSX09QRU5ST1VURVJfS0VZX0hFUkUiLCJYQUlfQVBJX0tFWSI6IllPVVJfWEFJX0tFWV9IRVJFIiwiQVpVUkVfT1BFTkFJX0FQSV9LRVkiOiJZT1VSX0FaVVJFX0tFWV9IRVJFIiwiT0xMQU1BX0FQSV9LRVkiOiJZT1VSX09MTEFNQV9BUElfS0VZX0hFUkUifX0K
 ```
 
 > **Note:** After clicking the link, you'll still need to add your API keys to the configuration. The link installs the MCP server with placeholder keys that you'll need to replace with your actual API keys.
@@ -71,7 +71,7 @@ MCP (Model Control Protocol) lets you run Task Master directly from your editor.
   "mcpServers": {
     "taskmaster-ai": {
       "command": "npx",
-      "args": ["-y", "--package=@pak360/task-master-ai", "task-master-ai"],
+      "args": ["-y", "--package=pak360-task-master-ai", "task-master-ai"],
       "env": {
         "ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
         "PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
@@ -97,7 +97,7 @@ MCP (Model Control Protocol) lets you run Task Master directly from your editor.
   "servers": {
     "taskmaster-ai": {
       "command": "npx",
-      "args": ["-y", "--package=@pak360/task-master-ai", "task-master-ai"],
+      "args": ["-y", "--package=pak360-task-master-ai", "task-master-ai"],
       "env": {
         "ANTHROPIC_API_KEY": "YOUR_ANTHROPIC_API_KEY_HERE",
         "PERPLEXITY_API_KEY": "YOUR_PERPLEXITY_API_KEY_HERE",
@@ -172,10 +172,10 @@ Use your AI assistant to:
 
 ```bash
 # Install globally
-npm install -g @pak360/task-master-ai
+npm install -g pak360-task-master-ai
 
 # OR install locally within your project
-npm install @pak360/task-master-ai
+npm install pak360-task-master-ai
 ```
 
 #### Initialize a new project
@@ -222,7 +222,7 @@ task-master generate
 Try running it with Node directly:
 
 ```bash
-node node_modules/@pak360/task-master-ai/scripts/init.js
+node node_modules/pak360-task-master-ai/scripts/init.js
 ```
 
 Or clone the repository and run:
