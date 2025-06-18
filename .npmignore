@@ -1,12 +1,15 @@
+# Git
+.git/
+.github/
+.gitignore
+
 # Development files
-.git
-.github
 .vscode
 .idea
 .DS_Store
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 dev-debug.log
@@ -15,7 +18,7 @@ init-debug.log
 # Source files not needed in the package
 src
 test
-tests
+tests/
 docs
 examples
 .editorconfig
@@ -31,7 +34,7 @@ tasks.json
 tasks/
 prd.txt
 scripts/prd.txt
-.env 
+.env
 
 # Temporary files
 .tmp
@@ -43,4 +46,15 @@ scripts/prd.txt
 node_modules/
 
 # Debug files
-*.debug 
+*.debug
+
+# New files from the code block
+.changeset/
+biome.json
+mcp-test.js
+test-*.js
+output.json
+context/
+
+# Environment variables
+.env 

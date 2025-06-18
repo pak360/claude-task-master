@@ -1,6 +1,6 @@
 {
 	"name": "pak360-task-master-ai",
-	"version": "0.17.1",
+	"version": "0.17.2",
 	"description": "A task management system for ambitious AI-driven development that doesn't overwhelm and confuse Cursor.",
 	"main": "index.js",
 	"type": "module",
